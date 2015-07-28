@@ -21,6 +21,7 @@ if (length(arguments)==0) {
   iteration <- sample(1:1000,1)
   prefix <- "debug"
   projectdir <- getwd()
+  dataset <- "/data/GSE4115_41female_41male.rds"
   if(file.exists("~/R_LIBS")){
   	userlibs <- "~/R_LIBS"
   } else {
@@ -30,7 +31,8 @@ if (length(arguments)==0) {
   iteration <- as.numeric(arguments[1])
   prefix <- arguments[2]
   projectdir <- arguments[3]
-  userlibs <- arguments[4]
+  dataset <- arguments[4]
+  userlibs <- arguments[5]
 }
 cat(paste("Iteration: ",iteration,"\n",sep=""))
 
@@ -78,7 +80,8 @@ print(outfile)
 # 1) a matrix of gene expression values which is accessed via 'exprs(fullDataSet)'
 # 2) a phenotypic matrix containing clinical covariates which is accessed via 'pData(fullDataSet)'
 # 3) a gene annotation matrix which contains mappings of genes to other known symbols such as ENSG or EMBL, accessed via 'fData(fullDataSet)'
-fullDataSet <- readRDS(file=paste(projectdir,"/data/GSE4115_41female_41male.rds",sep=""))
+fullDataSet <- readRDS(file=paste(projectdir, dataset, sep=""))
+#fullDataSet <- readRDS(file=paste(projectdir,"/data/GSE4115_41female_41male.rds",sep=""))
 #fullDataSet <- readRDS(file=paste(projectdir,"/data/GSE4115_Cancer.rds",sep=""))
 #fullDataSet <- readRDS(file=paste(projectdir,"/data/GSE37147_COPD.rds",sep=""))
 fullExprs <- exprs(fullDataSet)

@@ -55,16 +55,16 @@ echo ""
 #module load R/R-3.0.0_gnu-4.4.6
 
 # run the pipeline script with the iteration numner ($1), prefix ($2), project directory ($4), and user libraries ($5) as arguments
-R --no-save < /data/staging/pge_root/biomarker_discovery/scripts/PipelineScript.R --args $ARG1 $ARG2 $ARG4 $ARG5
+R --no-save < /data/staging/labcas-pges/biomarker_discovery/scripts/PipelineScript.R --args $ARG1 $ARG2 $ARG4 $ARG5 $ARG6
 
 # The following about moving not needed currently
 # create the directory cv within the results directory to house the cross-validation files
 #mkdir $ARG3/results/cv
-#mkdir /data/staging/pge_root/biomarker_discovery/results/cv
+#mkdir /data/staging/labcas-pges/biomarker_discovery/results/cv
 
 # copy those files from scratch space to the file system and remove them from scratch space
 #cp -av $TMPDIR/* $3/results/cv
-#cp -av $TMPDIR/* /data/staging/pge_root/biomarker_discovery/results/cv
+#cp -av $TMPDIR/* /data/staging/labcas-pges/biomarker_discovery/results/cv
 #rm -fv $TMPDIR/*
 
 echo ""

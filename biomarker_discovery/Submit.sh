@@ -25,6 +25,10 @@ PREFIX=$2
 PROJECTDIR=$3
 echo "PROJECTDIR=$PROJECTDIR"
 
+# define the input dataset
+DATASET=$4
+echo "DATASET=$DATASET"
+
 # define the output directory for the results files
 OUTDIR=$PROJECTDIR
 
@@ -45,8 +49,8 @@ do
   ID=$PREFIX"_fold_"$i"_"$RVAR
   LOG=$OUTDIR"/results/logs/"$ID".qlog"
   echo $LOG
-  echo "qsub -N $ID -d $TMPDIR -o $LOG -vJOB_ID=$ID,ARG1=$i,ARG2=$PREFIX,ARG3=$TMPDIR,ARG4=$PROJECTDIR,ARG5=$USERLIBS,TMPDIR=$TMPDIR $PROJECTDIR/scripts/Submit.qsub"
-  x=$(qsub -N $ID -d $TMPDIR -o $LOG -vJOB_ID=$ID,ARG1=$i,ARG2=$PREFIX,ARG3=$TMPDIR,ARG4=$PROJECTDIR,ARG5=$USERLIBS,TMPDIR=$TMPDIR $PROJECTDIR/scripts/Submit.qsub)
+  echo "qsub -N $ID -d $TMPDIR -o $LOG -vJOB_ID=$ID,ARG1=$i,ARG2=$PREFIX,ARG3=$TMPDIR,ARG4=$PROJECTDIR,ARG5=$DATASET,ARG6=$USERLIBS,TMPDIR=$TMPDIR $PROJECTDIR/scripts/Submit.qsub"
+  x=$(qsub -N $ID -d $TMPDIR -o $LOG -vJOB_ID=$ID,ARG1=$i,ARG2=$PREFIX,ARG3=$TMPDIR,ARG4=$PROJECTDIR,ARG5=$DATASET,ARG6=$USERLIBS,TMPDIR=$TMPDIR $PROJECTDIR/scripts/Submit.qsub)
   echo $x
 done
 
